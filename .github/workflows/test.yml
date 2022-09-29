@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: vmware-labs/vmware-image-builder-action@fold-log-output
+      - uses: vmware-labs/vmware-image-builder-action@blank-lines
         with:
           path: '/'
           config: '.vib'
