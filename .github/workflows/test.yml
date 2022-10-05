@@ -11,10 +11,10 @@ env:
 
 jobs:
   test-action: # make sure build/ci work properly
+  - name: Adding markdown
+    run: echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
     runs-on: ubuntu-latest
     steps:
-    - name: Adding markdown
-    run: echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
       - uses: actions/checkout@v2
       - uses: vmware-labs/vmware-image-builder-action@blank-lines
         with:
