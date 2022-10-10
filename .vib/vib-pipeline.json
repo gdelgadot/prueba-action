@@ -93,6 +93,18 @@
             "wait": {
               "file": "goss-wait.yaml"
             }
+          },
+          {
+          "action_id": "ginkgo",
+          "params": {
+            "resources": {
+              "path": "/.vib/metallb/ginkgo"
+
+            },
+            "params": {
+              "kubeconfig": "{{kubeconfig}}",
+              "namespace": "{{namespace}}"
+            }
           }
         }
       ]
