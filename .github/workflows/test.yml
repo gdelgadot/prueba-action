@@ -12,9 +12,8 @@ env:
 jobs:
   test-action: # make sure build/ci work properly
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Adding markdown
-        run: echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
       - uses: actions/checkout@v2
       - uses: vmware-labs/vmware-image-builder-action@main
         with:
@@ -23,7 +22,18 @@ jobs:
           pipeline: 'vib-pipeline.json'
           retry-count: 5
           backoff-intervals: '[100, 500, 1000, 2000, 5000]'
-  Prueba: # Generate list using Markdown
-  run:
-    echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
-    echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+  summary: 
+    name: Summary
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Simple job summary
+      run: echo '### Hello world :rocket:' >> $GITHUB_STEP_SUMMARY
+    
+    - name: Generate a table of results
+      run: |
+        echo "Test Result :test_tube: | Passed :green_circle: | Failed :x: | Skipped | Time Duration :alarm_clock: |" >> $GITHUB_STEP_SUMMARY
+        echo "| --------- | ------ | ------ | ------- | ------------- |" >> $GITHUB_STEP_SUMMARY
+        echo "| :green-circle: Passed | 122 | 0 | 3 | 12m 3s |" >> $GITHUB_STEP_SUMMARY
+        echo "| :x: Failed | 121 | 2 | 3 | 10m 3s |" >> $GITHUB_STEP_SUMMARY
+        echo "| :green_circle: Passed | 4 | 12 | 3 | 9m 4s |" >> $GITHUB_STEP_SUMMARY
