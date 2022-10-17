@@ -15,7 +15,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-      - uses: vmware-labs/vmware-image-builder-action@regex-modification-replace-variable
+      - uses: vmware-labs/vmware-image-builder-action@main
         with:
           path: '/'
           config: '.vib'
