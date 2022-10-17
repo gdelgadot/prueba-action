@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
-      - uses: vmware-labs/vmware-image-builder-action@main
+      - uses: actions/checkout@v2
+      - uses: vmware-labs/vmware-image-builder-action@0.4.6
         with:
           path: '/'
           config: '.vib'
