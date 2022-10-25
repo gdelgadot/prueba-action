@@ -1,35 +1,107 @@
 {
+  "context": {
+    "credentials": [
+      {
+        "url": "https://gitlab.eng.vmware.com",
+        "authn": {
+          "query_param": "private_token",
+          "token": "p8VKirPPUsb9-TxyghTf"
+        }
+      }
+    ]
+  },
   "phases": {
     "package": {
       "context": {
         "resources": {
-          "url": "https://github.com/bitnami/charts/tarball/ad1d8a5fd977ecd82e82ec8a2530d0d2522a8ed0",
-          "path": "/bitnami/wordpress"
+          "url": "https://gitlab.eng.vmware.com/api/v4/projects/94474/repository/archive.tar?sha=872f2cf34cc4cc64d2a59d005c8eda63859d8023",
+          "path": "/bitnami/wordpress/6/ova/debian-11/amd64"
         }
       },
       "actions": [
         {
-          "action_id": "helm-package"
-        },
-        {
-          "action_id": "helm-lint"
+          "action_id": "ova-package",
+          "params": {
+            "application": {
+              "details": {
+                "name": "wordpress",
+                "version": "6-debian-11"
+              }
+            }
+          }
         }
       ]
     },
     "verify": {
       "context": {
         "resources": {
-          "url": "https://gitlab.eng.vmware.com/api/v4/projects/76399/repository/archive.tar?sha=bfe743ad5a2134746c36badb9168fbdbd22afbd8&private_token=p8VKirPPUsb9-TxyghTf",
-          "path": "/examples/wordpress"
+          "url": "https://gitlab.eng.vmware.com/api/v4/projects/94474/repository/archive.tar?sha=872f2cf34cc4cc64d2a59d005c8eda63859d8023",
+          "path": "/.vib/wordpress"
         },
-        "runtime_parameters": "d29yZHByZXNzVXNlcm5hbWU6IHRlc3RfdXNlcgp3b3JkcHJlc3NQYXNzd29yZDogQ29tcGxpY2F0ZWRQYXNzd29yZDEyMyE0CndvcmRwcmVzc0VtYWlsOiB0ZXN0X3VzZXJfZW1haWxAZW1haWwuY29tCndvcmRwcmVzc0ZpcnN0TmFtZTogVGVzdE5hbWUKd29yZHByZXNzTGFzdE5hbWU6IFRlc3RMYXN0TmFtZQp3b3JkcHJlc3NCbG9nTmFtZTogVGVzdF9Vc2VycydzIEJsb2chCnNtdHBIb3N0OiBtYWlsLnNlcnZlci5jb20Kc210cFBvcnQ6IDEyMApzbXRwVXNlcjogdGVzdF9tYWlsX3VzZXIKc210cFBhc3N3b3JkOiB0ZXN0X21haWxfcGFzc3dvcmQKbWFyaWFkYjoKICBhdXRoOgogICAgZGF0YWJhc2U6IHRlc3Rfd29yZHByZXNzX2RhdGFiYXNlCiAgICB1c2VybmFtZTogdGVzdF93b3JkcHJlc3NfdXNlcm5hbWUKICAgIHBhc3N3b3JkOiB0ZXN0X3dvcmRwcmVzc19wYXNzd29yZApjb250YWluZXJTZWN1cml0eUNvbnRleHQ6CiAgZW5hYmxlZDogdHJ1ZQogIHJ1bkFzVXNlcjogMTAwMgogIHJ1bkFzTm9uUm9vdDogdHJ1ZQp3b3JkcHJlc3NUYWJsZVByZWZpeDogd29yZHByZXNzXw=="
+        "runtime_parameters": "dXNlcl9kYXRhOiBJeUV2WW1sdUwySmhjMmdLSXlCaWFYUnVZVzFwWDJGd2NHeHBZMkYwYVc5dVgzQmhjM04zYjNKa1BVTnZiWEJzYVdOaGRHVmtVR0Z6YzNkdmNtUXhNak1oTkFvaklHUmhkR0ZpWVhObFgzQmhjM04zYjNKa1BYUmxjM1JmZDI5eVpIQnlaWE56WDNCaGMzTjNiM0prQ21WNGNHOXlkQ0JOUVZKSlFVUkNYMFJCVkVGQ1FWTkZQWFJsYzNSZmQyOXlaSEJ5WlhOelgyUmhkR0ZpWVhObENtVjRjRzl5ZENCTlFWSkpRVVJDWDFWVFJWSTlkR1Z6ZEY5M2IzSmtjSEpsYzNOZmRYTmxjbTVoYldVS1pYaHdiM0owSUZkUFVrUlFVa1ZUVTE5Q1RFOUhYMDVCVFVVOUlsUmxjM1JmVlhObGNuTW5jeUJDYkc5bklTSUtaWGh3YjNKMElGZFBVa1JRVWtWVFUxOUZUVUZKVEQxMFpYTjBYM1Z6WlhKZlpXMWhhV3hBWlcxaGFXd3VZMjl0Q21WNGNHOXlkQ0JYVDFKRVVGSkZVMU5mUkVGVVFVSkJVMFZmVGtGTlJUMTBaWE4wWDNkdmNtUndjbVZ6YzE5a1lYUmhZbUZ6WlFwbGVIQnZjblFnVjA5U1JGQlNSVk5UWDBSQlZFRkNRVk5GWDFWVFJWSTlkR1Z6ZEY5M2IzSmtjSEpsYzNOZmRYTmxjbTVoYldVS1pYaHdiM0owSUZkUFVrUlFVa1ZUVTE5R1NWSlRWRjlPUVUxRlBWUmxjM1JPWVcxbENtVjRjRzl5ZENCWFQxSkVVRkpGVTFOZlRFRlRWRjlPUVUxRlBWUmxjM1JNWVhOMFRtRnRaUXBsZUhCdmNuUWdWMDlTUkZCU1JWTlRYMU5OVkZCZlNFOVRWRDF0WVdsc0xuTmxjblpsY2k1amIyMEtaWGh3YjNKMElGZFBVa1JRVWtWVFUxOVRUVlJRWDFCQlUxTlhUMUpFUFhSbGMzUmZiV0ZwYkY5d1lYTnpkMjl5WkFwbGVIQnZjblFnVjA5U1JGQlNSVk5UWDFOTlZGQmZVRTlTVkQweE1qQUtaWGh3YjNKMElGZFBVa1JRVWtWVFUxOVRUVlJRWDFWVFJWSTlkR1Z6ZEY5dFlXbHNYM1Z6WlhJS1pYaHdiM0owSUZkUFVrUlFVa1ZUVTE5VlUwVlNUa0ZOUlQxMFpYTjBYM1Z6WlhJPQptZW1vcnlfbGltaXQ6IDEwMjQKc3NoOgogIHVzZXJuYW1lOiBiaXRuYW1pCnBvcnRzOgogIC0gODAKICAtIDQ0Mw==",
+        "target_platform": {
+          "target_platform_id": "3bbd2f0f-c2a6-45df-9d03-5764fda56a48"
+        }
       },
       "actions": [
         {
+          "action_id": "health-check",
+          "params": {
+            "app_protocol": "HTTP",
+            "endpoint": "lb-wordpress-80"
+          }
+        },
+        {
+          "action_id": "jmeter",
+          "params": {
+            "resources": {
+              "path": "jmeter"
+            },
+            "app_protocol": "HTTPS",
+            "endpoint": "lb-wordpress-443",
+            "env": {
+              "wordpress.username": "test_user",
+              "wordpress.password": "ComplicatedPassword123!4"
+            },
+            "test_plan_file": "wordpress.jmx"
+          }
+        },
+        {
+          "action_id": "cypress",
+          "params": {
+            "resources": {
+              "path": "cypress"
+            },
+            "app_protocol": "HTTPS",
+            "endpoint": "lb-wordpress-443",
+            "env": {
+              "username": "test_user",
+              "password": "ComplicatedPassword123!4"
+            }
+          }
+        },
+        {
+          "action_id": "goss",
+          "params": {
+            "resources": {
+              "path": "goss"
+            },
+            "vars_file": "vars.yaml",
+            "wait": {
+              "file": "goss-wait.yaml"
+            }
+          }
+        },
+        {
+          "action_id": "grype",
+          "params": {
+            "threshold": "IGNORE_ALL"
+          }
+        },
+        {
           "action_id": "trivy",
           "params": {
-            "threshold": "CRITICAL",
-            "vuln_type": ["OS"]
+            "threshold": "IGNORE_ALL"
           }
         }
       ]
