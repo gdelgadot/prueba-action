@@ -27,6 +27,10 @@ jobs:
           retry-count: 5
           backoff-intervals: '[100, 500, 1000, 2000, 5000]'
           max-pipeline-duration: '24000'
+  parameters:
+    testsPassed: passed
+    testsFailed: failed
+    testsSkipped: skipped
   summary: 
     name: Summary
     runs-on: ubuntu-latest
@@ -35,7 +39,8 @@ jobs:
     - name: Simple job summary
       run: echo '### Hello world :rocket:' >> $GITHUB_STEP_SUMMARY
     
-    - name: Generate a table of results
+    - name:  Generate a table of results
+      if: tests.passed
       run: |
         echo "Test Result :test_tube: | Passed :green_circle: | Failed :x: | Skipped | Time Duration :alarm_clock: |" >> $GITHUB_STEP_SUMMARY
         echo "| --------- | ------ | ------ | ------- | ------------- |" >> $GITHUB_STEP_SUMMARY
