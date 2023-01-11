@@ -27,14 +27,3 @@ jobs:
           retry-count: 5
           backoff-intervals: '[100, 500, 1000, 2000, 5000]'
           max-pipeline-duration: '24000'
-
-  summary: 
-    name: Summary
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Simple job summary
-      run: |
-        set -o pipefail && go test ./... -json | node .github/parse-tests.js >> $GITHUB_STEP_SUMMARY
-        echo $GITHUB_STEP_SUMMARY
-
