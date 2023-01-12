@@ -27,3 +27,11 @@ jobs:
           retry-count: 5
           backoff-intervals: '[100, 500, 1000, 2000, 5000]'
           max-pipeline-duration: '24000'
+
+  summarize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write to workflow job summary
+        run: |
+          SUMMARY=$'# Testing Job Summary\n## Second Level Heading\nHello GitHub'
+          echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
