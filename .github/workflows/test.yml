@@ -34,6 +34,6 @@ jobs:
       - uses: actions/checkout@v2
       - run: echo "This is the job summary"
       - run: |
-        echo "${{job.name}}"
-        echo "${{job.status}}"
+        echo "${{job.name}}",
+        echo "${{job.status}}",
         echo "${{job.startTime}}"
