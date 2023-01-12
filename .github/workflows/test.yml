@@ -28,10 +28,12 @@ jobs:
           backoff-intervals: '[100, 500, 1000, 2000, 5000]'
           max-pipeline-duration: '24000'
 
-  summarize:
+  summary:
     runs-on: ubuntu-latest
     steps:
-      - name: Write to workflow job summary
-        run: |
-          SUMMARY=$'# Testing Job Summary\n## Second Level Heading\nHello GitHub'
-          echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
+      - uses: actions/checkout@v2
+      - run: echo "This is the job summary"
+      - run: |
+        echo "${{job.name}}"
+        echo "${{job.status}}"
+        echo "${{job.startTime}}"
