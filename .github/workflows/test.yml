@@ -27,14 +27,3 @@ jobs:
           retry-count: 5
           backoff-intervals: '[100, 500, 1000, 2000, 5000]'
           max-pipeline-duration: '24000'
-
-  summary:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: echo "This is the job summary"
-      - name: Set Node.js 16.x
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
-
