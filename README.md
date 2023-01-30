@@ -8,10 +8,3 @@ sdjuhy
 sfgdfg
 sdfsdfkijuh
 kiajsd
-ijasd
-kasd
-sdfsdf
-dsasd
-zxdas
-mhg
-sdf
