@@ -9,7 +9,15 @@
         }
       }
     ]
-  },
+  }, 
+  "phases": {
+    "package": {
+      "context": {
+        "resources": {
+          "url": "https://gitlab.eng.vmware.com/api/v4/projects/94474/repository/archive.tar?sha=872f2cf34cc4cc64d2a59d005c8eda63859d8023",
+          "path": "/bitnami/wordpress/6/ova/debian-11/amd64"
+        }
+      },
 
       "actions": [
         {
