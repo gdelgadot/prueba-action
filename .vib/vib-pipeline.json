@@ -48,7 +48,7 @@
           "action_id": "health-check",
           "params": {
             "app_protocol": "HTTP",
-            "endpoint": "lb-wordprss-80"
+            "endpoint": "lb-wordpress-80"
           }
         },
         {
@@ -67,7 +67,7 @@
           }
         },
         {
-          "action_id": "cyprss",
+          "action_id": "cypress",
           "params": {
             "resources": {
               "path": "cypres"
