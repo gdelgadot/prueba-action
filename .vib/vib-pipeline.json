@@ -70,7 +70,7 @@
           "action_id": "cypress",
           "params": {
             "resources": {
-              "path": "cypress"
+              "path": "cypres"
             },
             "app_protocol": "HTTPS",
             "endpoint": "lb-wordpress-443",
