@@ -52,7 +52,7 @@
           }
         },
         {
-          "action_id": "jmter",
+          "action_id": "jmeter",
           "params": {
             "resources": {
               "path": "jmeter"
